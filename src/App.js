@@ -1,11 +1,17 @@
 import "./App.css";
-import ExLodashTailwind from "./ExLodashTailwind/ExLodashTailwind";
+import { createBrowserHistory } from "history";
+import { Router, Switch } from "react-router-dom";
+import { HomeTemplate } from "./templates/HomeTemplate/HomeTemplate";
+import Home from "./pages/Home";
+export const history = createBrowserHistory();
 
 function App() {
   return (
-    <div className="App">
-      <ExLodashTailwind />
-    </div>
+    <Router history={history}>
+      <Switch>
+        <HomeTemplate path="/" exact Component={Home} />
+      </Switch>
+    </Router>
   );
 }
 
