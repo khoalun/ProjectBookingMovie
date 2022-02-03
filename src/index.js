@@ -4,7 +4,8 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { store } from "./types/configStore";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
+import 'antd/dist/antd.min.css'
 ReactDOM.render(
   <Provider store={store}>
     <App />
