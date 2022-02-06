@@ -1,53 +1,45 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import React from "react";
+import React, { useEffect } from "react";
 import { Carousel } from "antd";
-export default function HomeCarousel() {
+import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
+import { getCarouselAction } from "../../../../actions/CarouselAction";
+export default function HomeCarousel(props) {
+  const { arrImg } = useSelector((state) => state.CarouselReducer);
+  console.log("arrImg", arrImg);
+  const dispatch = useDispatch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+    dispatch(getCarouselAction());
+  });
   const contentStyle = {
-    height: "600px",
+    height: "900px",
     color: "#fff",
     lineHeight: "300px",
     textAlign: "center",
     background: "#364d79",
+    backgroundSize: "100%",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
   };
-  return (
-    <Carousel autoplay>
-      <div>
-        <div style={contentStyle}>
-          <img
-            src="./img/g4.jpg"
-            style={{ width: "100%", height: "100%" }}
-            alt="./img/g4.jpg"
-            className="h-full w-full"
-          />
+
+  const renderImg = () => {
+    return arrImg.map((item, index) => {
+      return (
+        <div key={index}>
+          <div
+            style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
+          >
+            <img
+              src={item.hinhAnh}
+              alt={item.maPhim}
+              className="w-full  opacity-0"
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <img
-            src="./img/g5.jpg"
-            alt="./img/g5.jpg"
-            className="h-full w-full"
-          />
-        </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <img
-            src="./img/g6.jpg"
-            alt="./img/g6.jpg"
-            className="h-full w-full"
-          />
-        </div>
-      </div>
-      <div>
-        <div style={contentStyle}>
-          <img
-            src="./img/g7.jpg"
-            alt="./img/g7.jpg"
-            className="h-full w-full"
-          />
-        </div>
-      </div>
-    </Carousel>
-  );
+      );
+    });
+  };
+  return <Carousel autoplay>{renderImg()}</Carousel>;
 }

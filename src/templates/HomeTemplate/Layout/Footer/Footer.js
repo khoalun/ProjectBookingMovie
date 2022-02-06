@@ -1,17 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 
-export default function Footer() {
+export default function Footer(props) {
   return (
     <footer className="p-6 dark:bg-coolGray-800 dark:text-coolGray-100 text-center bg-black text-white">
       <div className="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-4">
         <div className="flex flex-col space-y-4 ">
           <h2 className="font-medium text-white">Tix</h2>
           <div className="flex flex-col space-y-2 dark:text-coolGray-400 ">
-            <a rel="noopener noreferrer" href="#" style={{ color: "white" }}>
+            <a rel="noopener noreferrer" href="#" className="text-white">
               FAQ
             </a>
-            <a rel="noopener noreferrer" href="#" style={{ color: "white" }}>
+            <a rel="noopener noreferrer" href="#" className="text-white">
               Brand Guideline
             </a>
           </div>
