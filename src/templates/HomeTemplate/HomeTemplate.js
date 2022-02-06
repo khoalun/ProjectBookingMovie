@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Route } from "react-router-dom";
+import Footer from "./Layout/Footer/Footer";
 import Header from "./Layout/Header/Header";
 import HomeCarousel from "./Layout/HomeCarousel/HomeCarousel";
 
@@ -16,7 +17,8 @@ export const HomeTemplate = (props) => {
             <Header {...propsRoute} />
             <HomeCarousel {...propsRoute} />
             <Component {...propsRoute} />
-            <footer className="bg-black h-10">Day la footer</footer>
+            <hr className="mt-10"/>
+            <Footer {...propsRoute} />
           </Fragment>
         );
       }}

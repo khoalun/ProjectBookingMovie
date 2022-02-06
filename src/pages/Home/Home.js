@@ -6,9 +6,9 @@ export default function Home(props) {
   console.log("props", props);
   return (
     <div>
-      Day la homepage
       <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
+          <p >Day la homepage</p>
           <div className="flex flex-wrap -m-4">
             <div className="p-4 lg:w-1/3">
               <div className="h-full bg-gray-100 bg-opacity-75 px-8 pt-16 pb-24 rounded-lg overflow-hidden text-center relative">
@@ -193,7 +193,7 @@ export default function Home(props) {
           </div>
         </div>
       </section>
-      <div className="mx-4">
+      <div className="mx-44">
         <HomeMenu />
       </div>
     </div>
