@@ -5,6 +5,7 @@ import { Carousel } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { getCarouselAction } from "../../../../actions/CarouselAction";
+import "./HomeCarousel.css";
 export default function HomeCarousel(props) {
   const { arrImg } = useSelector((state) => state.CarouselReducer);
   console.log("arrImg", arrImg);
@@ -12,7 +13,8 @@ export default function HomeCarousel(props) {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     dispatch(getCarouselAction());
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const contentStyle = {
     height: "900px",
     color: "#fff",
@@ -31,11 +33,7 @@ export default function HomeCarousel(props) {
           <div
             style={{ ...contentStyle, backgroundImage: `url(${item.hinhAnh})` }}
           >
-            <img
-              src={item.hinhAnh}
-              alt={item.maPhim}
-              className="w-full  opacity-0"
-            />
+            <img src={item.hinhAnh} alt={item.maPhim} className="w-full opacity-0" />
           </div>
         </div>
       );

@@ -1,18 +1,14 @@
-import axios from "axios";
-import { DOMAIN } from "../util/settings/config";
+import { manageMovieService } from "../services/ManageMovieService";
 import { SET_CAROUSEL } from "./types/CarouselType";
 
 export const getCarouselAction = () => {
   return async (dispatch) => {
     try {
-     const result= await axios({
-        url: `${DOMAIN}/api/QuanLyPhim/LayDanhSachBanner`,
-        method: "GET",
+      const result = await manageMovieService.getBannerList();
+      dispatch({
+        type: SET_CAROUSEL,
+        arrImg: result.data.content,
       });
-        dispatch({
-            type: SET_CAROUSEL,
-            arrImg: result.data.content
-        })
     } catch (errors) {
       console.log("errors", errors);
     }
