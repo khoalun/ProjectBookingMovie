@@ -5,31 +5,27 @@ import HomeMenu from "./HomeMenu/HomeMenu";
 import { useSelector, useDispatch } from "react-redux";
 import SliderSlick from "../../components/SliderSlick/SliderSlick";
 import { getFilmAction } from "../../actions/ManageFilmAction";
-
+import Film from "../../components/Film/Film";
 export default function Home(props) {
-  console.log("propsHome", props);
   const { arrFilm } = useSelector((state) => state.MovieListReducer);
   const dispatch = useDispatch();
-  // const renderFilm = () => {
-  //   return arrFilm.map((movie, index) => {
-  //     return <Film key={index} />;
-  //   });
-  // };
-  
+  console.log("propsHome", props);
+
   // useEffect(() => {
   //   const action = getFilmAction();
   //   dispatch(action);
   // }, []);
+
+  useEffect(() => {
+    const action = getFilmAction();
+    dispatch(action); //dispatch function từ thunk
+  }, []);
 
   return (
     <div>
       <section className="text-gray-600 body-font ">
         <div className="container px-5  mx-auto">
           <SliderSlick arrFilm={arrFilm} />
-          {/* <div className="flex flex-wrap -m-4 my-5 justify-center">
-            <p>Day la homepage</p> 
-            {renderFilm()}
-          </div> */}
         </div>
       </section>
       <div className="mx-44 ">

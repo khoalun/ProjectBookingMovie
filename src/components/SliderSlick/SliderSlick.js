@@ -12,7 +12,6 @@ function SampleNextArrow(props) {
         ...style,
         display: "block",
         color: "black",
-        left: "100%",
       }}
       onClick={onClick}
     />

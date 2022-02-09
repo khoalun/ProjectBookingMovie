@@ -7,6 +7,7 @@ import Contact from "./pages/Contact/Contact";
 import News from "./pages/News/News";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
+
 export const history = createBrowserHistory();
 
 function App() {

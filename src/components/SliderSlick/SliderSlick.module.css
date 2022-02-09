@@ -7,3 +7,7 @@
 .width-item {
   width: 100% !important;
 }
+
+body > iframe {
+  display: none !important;
+}
