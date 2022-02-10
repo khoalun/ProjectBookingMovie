@@ -1,6 +1,7 @@
+/* eslint-disable react/jsx-pascal-case */
 import React, { Component } from "react";
 import Slider from "react-slick";
-import Film from "../Film/Film";
+import Film_Card from "../Film/Film_Card";
 import styleSlick from "./SliderSlick.module.css";
 
 function SampleNextArrow(props) {
@@ -38,8 +39,8 @@ export default class SliderSlick extends Component {
   renderMovie = () => {
     return this.props.arrFilm.map((item, index) => {
       return (
-        <div key={item} className={`${styleSlick["width-item"]}`}>
-          <Film movie={item} />
+        <div key={index} className={`${styleSlick["width-item"]}`}>
+          <Film_Card item={item} />
         </div>
       );
     });

@@ -28,7 +28,8 @@ export default function Home(props) {
           <SliderSlick arrFilm={arrFilm} />
         </div>
       </section>
-      <div className="mx-44 ">
+
+      <div className="mx-44  mt-12" style={{ width: "500px", height: "500px" }}>
         <HomeMenu />
       </div>
     </div>
