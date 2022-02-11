@@ -1,4 +1,8 @@
-import { SET_MOVIE_LIST } from "../actions/types/ManageFilmType";
+import {
+  SET_CURRENT_FILM,
+  SET_MOVIE_LIST,
+  SET_UPCOMING_FILM,
+} from "../actions/types/ManageFilmType";
 
 const stateDefault = {
   arrFilm: [
@@ -14,18 +18,39 @@ const stateDefault = {
       ngayKhoiChieu: "2022-01-25T13:57:40.603",
       danhGia: 10,
       hot: true,
-      dangChieu: false,
+      dangChieu: true,
       sapChieu: true,
     },
   ],
+  arrFilmDefault: [],
+  dangChieu: true,
+  sapChieu: true,
 };
 
 export const MovieListReducer = (state = stateDefault, action) => {
   switch (action.type) {
     case SET_MOVIE_LIST: {
       state.arrFilm = action.arrFilm;
+      state.arrFilmDefault = state.arrFilm;
       return { ...state };
     }
+    case SET_CURRENT_FILM: {
+      state.dangChieu = !state.dangChieu;
+      state.arrFilm = state.arrFilmDefault.filter(
+        (movie) => movie.dangChieu === state.dangChieu
+      );
+      return { ...state };
+    }
+
+    case SET_UPCOMING_FILM: {
+      state.sapChieu = !state.sapChieu;
+
+      state.arrFilm = state.arrFilmDefault.filter(
+        (movie) => movie.sapChieu === state.sapChieu
+      );
+      return { ...state };
+    }
+
     default:
       return {
         ...state,

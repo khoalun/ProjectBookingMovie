@@ -1,15 +1,17 @@
 import React from "react";
 import "./Film_Card.css";
 import { PlayCircleOutlined } from "@ant-design/icons";
+
 export default function Film_card(props) {
   const { item } = props;
   return (
-    <div className="flip-card mt-5">
+    <div className="flip-card mt-5 ">
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <img
             src={item.hinhAnh}
             alt="Avatar"
+            className="rounded-t-lg"
             style={{ width: 300, height: 300 }}
             onError={(e) => {
               e.target.onerror = null;
@@ -21,7 +23,7 @@ export default function Film_card(props) {
           className="flip-card-back"
           style={{ position: "relative", backgroundColor: "rgba(0,0,0,.9)" }}
         >
-          <div style={{ position: "absolute", top:0, left: 0 }}>
+          <div style={{ position: "absolute" }}>
             <img
               src={item.hinhAnh}
               alt="Avatar"
@@ -40,20 +42,28 @@ export default function Film_card(props) {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              borderRadius: "15px",
             }}
           >
             <div>
               <div className="rounded-full cursor-pointer">
                 <PlayCircleOutlined style={{ fontSize: "50px" }} />
               </div>
-              <div className="text-2xl mt-2 font-bold">{item.tenPhim}</div>
+              <div className="text-1xl mt-2 font-bold">{item.tenPhim}</div>
+              <p className="leading-relaxed mb-3 mt-5">
+                {item.moTa.length > 100 ? (
+                  <span>{item.moTa.slice(0, 100)} ...</span>
+                ) : (
+                  <span>{item.moTa}</span>
+                )}
+              </p>
             </div>
           </div>
         </div>
       </div>
       <div
-        className="bg-orange-300 text-center cursor-pointer py-2 bg-indigo-300 text-success-50 font-bold "
-        style={{ justifyContent: "center", alignItems: "center" }}
+        className="text-center cursor-pointer py-2 font-bold rounded-b-lg"
+        style={{ backgroundColor: "gray", color: "white" }}
       >
         Booking Ticket
       </div>

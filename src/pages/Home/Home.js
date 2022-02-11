@@ -5,16 +5,10 @@ import HomeMenu from "./HomeMenu/HomeMenu";
 import { useSelector, useDispatch } from "react-redux";
 import SliderSlick from "../../components/SliderSlick/SliderSlick";
 import { getFilmAction } from "../../actions/ManageFilmAction";
-import Film from "../../components/Film/Film";
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.MovieListReducer);
   const dispatch = useDispatch();
-  console.log("propsHome", props);
-
-  // useEffect(() => {
-  //   const action = getFilmAction();
-  //   dispatch(action);
-  // }, []);
+  console.log("propsHome", arrFilm );
 
   useEffect(() => {
     const action = getFilmAction();

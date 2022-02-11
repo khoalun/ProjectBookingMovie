@@ -38,3 +38,7 @@
   color: white;
   transform: rotateY(180deg);
 }
+
+.card-back {
+  border-radius: 12px 12px !important;
+}
