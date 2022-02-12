@@ -6,7 +6,7 @@ import {
   SET_CURRENT_FILM,
   SET_UPCOMING_FILM,
 } from "../../actions/types/ManageFilmType";
-import Film_Card from '../Film/Film_Card'
+import FilmCard from "../Film/FilmCard";
 import styleSlick from "./SliderSlick.module.css";
 
 function SampleNextArrow(props) {
@@ -46,7 +46,7 @@ const SliderSlick = (props) => {
     return props.arrFilm.slice(0, 12).map((item, index) => {
       return (
         <div key={index} className={`${styleSlick["width-item"]}`}>
-          <Film_Card item={item} />
+          <FilmCard item={item} />
         </div>
       );
     });

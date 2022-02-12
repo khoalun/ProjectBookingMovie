@@ -1,8 +1,8 @@
 import React from "react";
-import "./Film_Card.css";
+import "./FilmCard.css";
 import { PlayCircleOutlined } from "@ant-design/icons";
 
-export default function Film_Card(props) {
+export default function FilmCard(props) {
   const { item } = props;
   return (
     <div className="flip-card mt-5 ">
