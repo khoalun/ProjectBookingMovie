@@ -6,7 +6,7 @@ import {
   SET_CURRENT_FILM,
   SET_UPCOMING_FILM,
 } from "../../actions/types/ManageFilmType";
-import Film_Card from "../Film/Film_Card";
+import Film_Card from '../Film/Film_Card'
 import styleSlick from "./SliderSlick.module.css";
 
 function SampleNextArrow(props) {
