@@ -7,6 +7,7 @@ module.exports = {
       //...
       {
         test: /\.(png|jp(e*)g|svg|gif)$/,
+        historyApiFallback: true,
         use: [
           {
             loader: "file-loader",
