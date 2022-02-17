@@ -2,7 +2,7 @@ import React from "react";
 import "./FilmCard.css";
 import { PlayCircleOutlined } from "@ant-design/icons";
 
-export default function FilmCard(props) {
+export default function Film_Card(props) {
   const { item } = props;
   return (
     <div className="flip-card mt-5 ">
@@ -49,7 +49,7 @@ export default function FilmCard(props) {
               <div className="rounded-full cursor-pointer">
                 <PlayCircleOutlined style={{ fontSize: "50px" }} />
               </div>
-              <div className="text-1xl mt-2 font-bold">{item.tenPhim}</div>
+              <div className="text-2xl mt-2 font-bold">{item.tenPhim}</div>
               <p className="leading-relaxed mb-3 mt-5">
                 {item.moTa.length > 100 ? (
                   <span>{item.moTa.slice(0, 100)} ...</span>

@@ -1,0 +1,1 @@
+export const SET_ARRAY_THEATRE = "SET_ARRAY_THEATRE";

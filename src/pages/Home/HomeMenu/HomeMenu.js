@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, memo, Fragment } from "react";
 import { Tabs } from "antd";
-
+import { NavLink } from "react-router-dom";
+import './HomeMenu.css'
+import moment from "moment";
 const { TabPane } = Tabs;
-export default function HomeMenu(props) {
+function HomeMenu(props) {
   const [state] = useState({
     tabPosition: "left",
   });
@@ -10,51 +12,109 @@ export default function HomeMenu(props) {
   //     setState({ tabPosition: e.target.value });
   //   };
   const { tabPosition } = state;
+  console.log("123", props);
+  const renderTheatreList = () => {
+    return props.arrTheatre.map((theatre, index) => {
+      return (
+        <TabPane
+          tab={
+            <img
+              src={theatre.logo}
+              className="rounded-full"
+              width="50px"
+              alt="goku.jpg"
+            />
+          }
+          key={index}
+        >
+          <Tabs tabPosition={tabPosition}>
+            {theatre.lstCumRap?.slice(0, 6).map((partTheatre, index) => {
+              return (
+                <TabPane
+                  tab={
+                    <div style={{ width: "300px", display: "flex" }}>
+                      <img
+                        src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
+                        width="50px"
+                        alt="goku.jpg"
+                      />
+                      <br />
+                      <div className="text-left ml-2">
+                        {partTheatre.tenCumRap}
+                        <p className="text-sm subpixel-antialiased font-semibold">
+                          Detail
+                        </p>
+                      </div>
+                    </div>
+                  }
+                  key={index}
+                >
+                  {partTheatre.danhSachPhim.slice(0, 5).map((movie, index) => {
+                    return (
+                      <Fragment key={index}>
+                        <div className="my-5">
+                          <div style={{ display: "flex" }}>
+                            <img
+                              style={{
+                                height: 150,
+                                width: 150,
+                                border: "1px solid black",
+                                borderRadius: "4px",
+                                padding: "5px",
+                              }}
+                              className="imageHome"
+                              src={movie.hinhAnh}
+                              alt={movie.tenPhim}
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = "https://picsum.photos/300/300";
+                              }}
+                            />
+                            <div className="ml-2">
+                              <h1 className="font-bold text-sm ml-2">
+                                {movie.tenPhim}
+                              </h1>
+                              <p className="font-medium underline">
+                                {partTheatre.diaChi}
+                              </p>
+                              <div className="grid grid-cols-6 gap-5">
+                                {movie.lstLichChieuTheoPhim
+                                  ?.slice(0, 12)
+                                  .map((day, index) => {
+                                    return (
+                                      <NavLink
+                                        to="/"
+                                        key={index}
+                                        className="text-sm text-gray-600 border p-2 bg-gray-200	"
+                                      >
+                                        {moment(day.ngayChieuGioChieu).format(
+                                          "hh:mm A"
+                                        )}
+                                      </NavLink>
+                                    );
+                                  })}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
+                      </Fragment>
+                    );
+                  })}
+                </TabPane>
+              );
+            })}
+          </Tabs>
+        </TabPane>
+      );
+    });
+  };
   return (
     <div>
       <>
-        <Tabs tabPosition={tabPosition}>
-          <TabPane
-            tab={
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full"
-                width="50px"
-                alt="goku.jpg"
-              />
-            }
-            key="1"
-          >
-            Content of Tab 1
-          </TabPane>
-          <TabPane
-            tab={
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full"
-                width="50px"
-                alt="goku.jpg"
-              />
-            }
-            key="2"
-          >
-            Content of Tab 2
-          </TabPane>
-          <TabPane
-            tab={
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full"
-                width="50px"
-                alt="goku.jpg"
-              />
-            }
-            key="3"
-          >
-            Content of Tab 3
-          </TabPane>
-        </Tabs>
+        <Tabs tabPosition={tabPosition}>{renderTheatreList()}</Tabs>
       </>
     </div>
   );
 }
+export default memo(HomeMenu);

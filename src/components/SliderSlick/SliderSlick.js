@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-pascal-case */
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Slider from "react-slick";
 import {
   SET_CURRENT_FILM,
@@ -11,6 +11,7 @@ import styleSlick from "./SliderSlick.module.css";
 
 function SampleNextArrow(props) {
   const { className, style, onClick } = props;
+
   return (
     <div
       className={`${className} ${styleSlick["slick-prev"]}`}
@@ -41,11 +42,18 @@ function SamplePrevArrow(props) {
 }
 
 const SliderSlick = (props) => {
+  const { dangChieu, sapChieu } = useSelector(
+    (state) => state.MovieListReducer
+  );
+  let activeClassDC =
+    dangChieu === true ? "active_FilmDC" : "none_active_FilmDC";
+
+  let activeClassSC = sapChieu === true ? "active_Film" : "none_active_Film";
   const dispatch = useDispatch();
   const renderMovie = () => {
-    return props.arrFilm.slice(0, 12).map((item, index) => {
+    return props.arrFilm.slice(0, 20)?.map((item, index) => {
       return (
-        <div key={index} className={`${styleSlick["width-item"]}`}>
+        <div key={index} className="mt-2">
           <FilmCard item={item} />
         </div>
       );
@@ -66,7 +74,7 @@ const SliderSlick = (props) => {
   return (
     <div>
       <button
-        className="relative px-8 py-4 ml-4 overflow-hidden font-semibold rounded bg-neutral-900	 text-white mt-5 "
+        className={`${styleSlick[activeClassDC]} relative overflow-hidden px-8 py-4 ml-4  font-semibold rounded bg-neutral-900	 text-white mt-5 border border-gray-800`}
         style={{ marginLeft: "57px" }}
         onClick={() => {
           const action = { type: SET_CURRENT_FILM };
@@ -80,7 +88,7 @@ const SliderSlick = (props) => {
       </button>
 
       <button
-        className="relative px-8 py-4 ml-4  font-semibold rounded bg-neutral-900	 text-white"
+        className={`${styleSlick[activeClassSC]}  px-8 py-4 ml-4  font-semibold rounded bg-neutral-900	text-white border-gray-800 border`}
         onClick={() => {
           const action = { type: SET_UPCOMING_FILM };
           dispatch(action);

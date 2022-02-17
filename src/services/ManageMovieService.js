@@ -7,6 +7,7 @@ export default class ManageMovieService extends baseService {
   }
 
   getBannerList = () => {
+    
     return this.get(`/api/QuanLyPhim/LayDanhSachBanner`);
   };
 

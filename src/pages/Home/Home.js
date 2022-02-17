@@ -5,14 +5,17 @@ import HomeMenu from "./HomeMenu/HomeMenu";
 import { useSelector, useDispatch } from "react-redux";
 import SliderSlick from "../../components/SliderSlick/SliderSlick";
 import { getFilmAction } from "../../actions/ManageFilmAction";
+import { getListTheatre } from "../../actions/ManageTheatreAction";
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.MovieListReducer);
+  const { arrTheatre } = useSelector((state) => state.ManageTheatreReducer);
   const dispatch = useDispatch();
-  console.log("propsHome", arrFilm );
+  console.log("propsHome", arrFilm);
 
   useEffect(() => {
     const action = getFilmAction();
     dispatch(action); //dispatch function từ thunk
+    dispatch(getListTheatre());
   }, []);
 
   return (
@@ -23,8 +26,8 @@ export default function Home(props) {
         </div>
       </section>
 
-      <div className="mx-44  mt-12" style={{ width: "500px", height: "500px" }}>
-        <HomeMenu />
+      <div className="mx-44  mt-12" >
+        <HomeMenu arrTheatre={arrTheatre} />
       </div>
     </div>
   );
