@@ -14,8 +14,8 @@ export default function Header(props) {
             className="flex items-center p-2"
           >
             <img
-              src="./img/logo.jpg"
-              alt="./img/logo.jpg"
+              src='https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png'
+              alt="valorant"
               style={{ width: "50px", height: "50px" }}
             />
           </a>

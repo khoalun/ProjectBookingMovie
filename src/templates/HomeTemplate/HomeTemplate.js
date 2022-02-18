@@ -2,7 +2,6 @@ import { Fragment, useEffect } from "react";
 import { Route } from "react-router-dom";
 import Footer from "./Layout/Footer/Footer";
 import Header from "./Layout/Header/Header";
-import HomeCarousel from "./Layout/HomeCarousel/HomeCarousel";
 
 export const HomeTemplate = (props) => {
   // props path exact component
@@ -17,9 +16,8 @@ export const HomeTemplate = (props) => {
         return (
           <Fragment>
             <Header {...propsRoute} />
-            <HomeCarousel {...propsRoute} />
             <Component {...propsRoute} />
-            <hr style={{ marginTop: "500px" }} />
+            <hr />
             <Footer />
           </Fragment>
         );

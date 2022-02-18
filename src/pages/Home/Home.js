@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import SliderSlick from "../../components/SliderSlick/SliderSlick";
 import { getFilmAction } from "../../actions/ManageFilmAction";
 import { getListTheatre } from "../../actions/ManageTheatreAction";
+import HomeCarousel from "../../templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel";
+
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.MovieListReducer);
   const { arrTheatre } = useSelector((state) => state.ManageTheatreReducer);
@@ -20,13 +22,14 @@ export default function Home(props) {
 
   return (
     <div>
+      <HomeCarousel />
       <section className="text-gray-600 body-font ">
         <div className="container px-5  mx-auto">
           <SliderSlick arrFilm={arrFilm} />
         </div>
       </section>
 
-      <div className="mx-44  mt-12" >
+      <div className="mx-44  mt-12">
         <HomeMenu arrTheatre={arrTheatre} />
       </div>
     </div>

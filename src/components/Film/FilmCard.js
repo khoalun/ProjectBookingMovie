@@ -1,7 +1,7 @@
 import React from "react";
 import "./FilmCard.css";
 import { PlayCircleOutlined } from "@ant-design/icons";
-
+import { history } from "../../App";
 export default function Film_Card(props) {
   const { item } = props;
   return (
@@ -64,8 +64,11 @@ export default function Film_Card(props) {
       <div
         className="text-center cursor-pointer py-2 font-bold rounded-b-lg"
         style={{ backgroundColor: "gray", color: "white" }}
+        onClick={() => {
+          history.push(`/detail/${item.maPhim}`);
+        }}
       >
-        Booking Ticket
+        Buy Ticket
       </div>
       &nbsp;
     </div>

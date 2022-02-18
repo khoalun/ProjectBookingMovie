@@ -1,7 +1,14 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import _ from "lodash";
+import { useSelector } from "react-redux";
 
 export default function Footer(props) {
+  const { arrTheatre } = useSelector((state) => state.ManageTheatreReducer);
+  const arrTheatreFooter = _.map(arrTheatre, (item) =>
+    _.pick(item, ["maHeThongRap", "tenHeThongRap", "logo"])
+  );
+  console.log("footer", arrTheatreFooter);
   return (
     <footer className="p-6 dark:bg-coolGray-800 dark:text-coolGray-100 text-center bg-black text-white">
       <div className="container grid grid-cols-2 mx-auto gap-x-3 gap-y-8 sm:grid-cols-3 md:grid-cols-4">
@@ -19,156 +26,48 @@ export default function Footer(props) {
         <div className="flex flex-col space-y-4">
           <h2 className="font-medium text-white">Partners</h2>
           <div className="flex flex-row text-sm dark:text-coolGray-40 justify-center">
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2 "
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2 "
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
+            {arrTheatreFooter.map((banner, index) => {
+              return (
+                <a rel="noopener noreferrer" href="#" key={index}>
+                  <img
+                    src={banner.logo}
+                    className="rounded-full mr-2 "
+                    width="50px"
+                    alt="goku.jpg"
+                  />
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex flex-row text-sm dark:text-coolGray-40 justify-center">
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2 "
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2 "
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
+            {arrTheatreFooter.map((banner, index) => {
+              return (
+                <a rel="noopener noreferrer" href="#" key={index}>
+                  <img
+                    src={banner.logo}
+                    className="rounded-full mr-2 "
+                    width="50px"
+                    alt="goku.jpg"
+                  />
+                </a>
+              );
+            })}
           </div>
 
           <div className="flex flex-row text-sm dark:text-coolGray-40 justify-center">
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2 "
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2 "
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
-            <a rel="noopener noreferrer" href="#">
-              <img
-                src="https://pbs.twimg.com/media/DyKHSklX0AApOAS.jpg"
-                className="rounded-full mr-2"
-                width="50px"
-                alt="goku.jpg"
-              />
-            </a>
+            {arrTheatreFooter.map((banner, index) => {
+              return (
+                <a rel="noopener noreferrer" href="#" key={index}>
+                  <img
+                    src={banner.logo}
+                    className="rounded-full mr-2 "
+                    width="50px"
+                    alt="goku.jpg"
+                  />
+                </a>
+              );
+            })}
           </div>
         </div>
         <div className="flex flex-col space-y-4">
