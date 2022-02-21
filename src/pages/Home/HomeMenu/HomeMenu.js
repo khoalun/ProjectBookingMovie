@@ -85,7 +85,7 @@ function HomeMenu(props) {
                                       <NavLink
                                         to="/"
                                         key={index}
-                                        className="text-sm text-gray-600 border p-2 bg-gray-200	"
+                                        className="text-sm text-gray-600 border p-2 bg-gray-200	 font-bold"
                                       >
                                         {moment(day.ngayChieuGioChieu).format(
                                           "hh:mm A"
