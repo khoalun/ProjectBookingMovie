@@ -3,6 +3,7 @@ import {
   SET_MOVIE_LIST,
   SET_UPCOMING_FILM,
 } from "../actions/types/ManageFilmType";
+import { SET_DETAIL_FILM } from "../actions/types/ManageTheatreType";
 
 const stateDefault = {
   arrFilm: [
@@ -22,6 +23,7 @@ const stateDefault = {
       sapChieu: true,
     },
   ],
+  filmDetail: {},
   arrFilmDefault: [],
   dangChieu: true,
   sapChieu: true,
@@ -48,6 +50,10 @@ export const MovieListReducer = (state = stateDefault, action) => {
       state.arrFilm = state.arrFilmDefault.filter(
         (movie) => movie.sapChieu === state.sapChieu
       );
+      return { ...state };
+    }
+    case SET_DETAIL_FILM: {
+      state.filmDetail = action.filmDetail;
       return { ...state };
     }
 

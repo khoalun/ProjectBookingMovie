@@ -7,7 +7,13 @@ export default class ManageTheatreService extends baseService {
   }
 
   getTheatreList = () => {
-    return this.get(`api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`);
+    return this.get(
+      `api/QuanLyRap/LayThongTinLichChieuHeThongRap?maNhom=${GROUPID}`
+    );
+  };
+
+  getMovieSchedule = (maPhim) => {
+    return this.get(`/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`);
   };
 }
 
