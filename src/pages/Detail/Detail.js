@@ -37,6 +37,7 @@ export default function Detail(props) {
         color="#14AEFF" // default color is white
         blur={10} // default blur value is 10px
         borderRadius={0} // default border radius value is 10px
+        className="backgroundImg"
       >
         <div className="grid grid-cols-12">
           <div className="col-span-5 col-start-3 ">
@@ -137,7 +138,7 @@ export default function Detail(props) {
                                 .map((day, index) => {
                                   return (
                                     <NavLink
-                                      to = '/'
+                                      to="/"
                                       key={index}
                                       className="col-span-1 text-green-800 font-bold"
                                     >
@@ -157,7 +158,30 @@ export default function Detail(props) {
               </Tabs>
             </TabPane>
             <TabPane tab="Information" key="2">
-              Tab 2
+              <div className="grid grid-cols-9 mx-auto my-auto p-8">
+                <div className="col-span-2 col-start-2 titleInfo">
+                  <div className="titleInfo">Ngày công chiếu</div>
+                  <div className="titleInfo">Đạo diễn</div>
+                  <div className="titleInfo">Diễn viên</div>
+                  <div className="titleInfo">Thể loại</div>
+                  <div className="titleInfo">Định dạng</div>
+                  <div className="titleInfo">Ngôn Ngữ</div>
+                </div>
+                <div className="col-span-2  gap-4">
+                  <div className="titleInfo">
+                    {moment(filmDetail.ngayKhoiChieu).format("hh.mm A")}
+                  </div>
+                  <div className="titleInfo">Đạo diễn</div>
+                  <div className="titleInfo">Diễn viên</div>
+                  <div className="titleInfo">Thể loại</div>
+                  <div className="titleInfo">Định dạng</div>
+                  <div className="titleInfo">Ngôn Ngữ</div>
+                </div>
+                <div className="col-span-4">
+                  <div className="titleInfo">Nội dung</div>
+                  <div>{filmDetail.moTa}</div>
+                </div>
+              </div>
             </TabPane>
             <TabPane tab="Review" key="3">
               Tab 3
