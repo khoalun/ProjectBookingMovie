@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import Footer from "./Layout/Footer/Footer";
 import Header from "./Layout/Header/Header";
 
-export const HomeTemplate = (props) => {
+const HomeTemplate = (props) => {
   // props path exact component
   const { Component, ...restProps } = props; // boc tach' props
   useEffect(() => {
@@ -25,3 +25,4 @@ export const HomeTemplate = (props) => {
     />
   );
 };
+export default HomeTemplate;

@@ -8,6 +8,7 @@ import { getFilmAction } from "../../actions/ManageFilmAction";
 import { getListTheatre } from "../../actions/ManageTheatreAction";
 import HomeCarousel from "../../templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel";
 import Ads from "../../components/Ads";
+import Loading from "../../components/Loading/Loading";
 
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.MovieListReducer);
@@ -33,7 +34,7 @@ export default function Home(props) {
       <div className="mx-44  mt-12">
         <HomeMenu arrTheatre={arrTheatre} />
       </div>
-      <Ads/>
+      <Ads />
     </div>
   );
 }
