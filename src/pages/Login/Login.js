@@ -12,7 +12,7 @@ export default function Login(props) {
     initialValues: {
       taiKhoan: "",
       matKhau: "",
-      // email: "",
+      email: "",
     },
     onSubmit: (values) => {
       const action = loginAction(values);
@@ -101,7 +101,7 @@ export default function Login(props) {
                 placeholder="Enter your password"
               />
             </div>
-            {/* <div>
+            <div>
               <div className="text-lg font-bold text-gray-700 tracking-wide py-2">
                 Email
               </div>
@@ -112,7 +112,7 @@ export default function Login(props) {
                 type="true"
                 placeholder="mike@gmail.com"
               />
-            </div> */}
+            </div>
             <div>
               <a
                 className="text-sm font-display font-semibold text-indigo-600 hover:text-indigo-800

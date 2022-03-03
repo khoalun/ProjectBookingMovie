@@ -8,6 +8,7 @@ import { getFilmAction } from "../../actions/ManageFilmAction";
 import { getListTheatre } from "../../actions/ManageTheatreAction";
 import HomeCarousel from "../../templates/HomeTemplate/Layout/HomeCarousel/HomeCarousel";
 import Ads from "../../components/Ads";
+import News from "../News/News";
 
 
 export default function Home(props) {
@@ -34,6 +35,7 @@ export default function Home(props) {
       <div className="mx-44  mt-12">
         <HomeMenu arrTheatre={arrTheatre} />
       </div>
+      <News/>
       <Ads />
     </div>
   );

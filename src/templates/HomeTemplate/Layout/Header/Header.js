@@ -3,6 +3,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { history } from "../../../../App";
 export default function Header(props) {
+  
   return (
     <div>
       <header className="p-4 dark:bg-coolGray-800  bg-opacity-60 bg-black text-white fixed w-full z-10">
