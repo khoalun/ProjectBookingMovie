@@ -1,0 +1,1 @@
+export const LOG_IN_ACTION = 'LOG_IN_ACTION';

@@ -1,7 +1,7 @@
 import React, { useState, memo, Fragment } from "react";
 import { Tabs } from "antd";
 import { NavLink } from "react-router-dom";
-import './HomeMenu.css'
+import "./HomeMenu.css";
 import moment from "moment";
 const { TabPane } = Tabs;
 function HomeMenu(props) {
@@ -20,7 +20,7 @@ function HomeMenu(props) {
           tab={
             <img
               src={theatre.logo}
-              className="rounded-full"
+              className="rounded-full border-under"
               width="50px"
               alt="goku.jpg"
             />
@@ -39,11 +39,12 @@ function HomeMenu(props) {
                         alt="goku.jpg"
                       />
                       <br />
-                      <div className="text-left ml-2">
+                      <div className="text-left ml-2 text-full">
                         {partTheatre.tenCumRap}
                         <p className="text-sm subpixel-antialiased font-semibold">
                           Detail
                         </p>
+                        <hr style={{ marginTop: "40px" }} />
                       </div>
                     </div>
                   }

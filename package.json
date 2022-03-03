@@ -11,6 +11,7 @@
     "@tsamantanis/react-glassmorphism": "^1.1.2",
     "antd": "^4.18.6",
     "axios": "^0.25.0",
+    "formik": "^2.2.9",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "node-sass": "^7.0.1",
@@ -26,7 +27,8 @@
     "sass-loader": "^12.6.0",
     "slick-carousel": "^1.8.1",
     "thunk": "^0.0.1",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",

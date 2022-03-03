@@ -138,7 +138,7 @@ export default function Detail(props) {
                                 .map((day, index) => {
                                   return (
                                     <NavLink
-                                      to="/"
+                                      to={`/checkout/${day.maLichChieu}`}
                                       key={index}
                                       className="col-span-1 text-green-800 font-bold"
                                     >

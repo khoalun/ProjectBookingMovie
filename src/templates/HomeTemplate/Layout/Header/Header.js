@@ -1,24 +1,25 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { NavLink } from "react-router-dom";
-
+import { history } from "../../../../App";
 export default function Header(props) {
   return (
     <div>
       <header className="p-4 dark:bg-coolGray-800  bg-opacity-60 bg-black text-white fixed w-full z-10">
         <div className="container flex justify-between h-16 mx-auto">
-          <a
+          <NavLink
+            to="/"
             rel="noopener noreferrer"
             href="#"
             aria-label="Back to homepage"
             className="flex items-center p-2"
           >
             <img
-              src='https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png'
+              src="https://seeklogo.com/images/V/valorant-logo-FAB2CA0E55-seeklogo.com.png"
               alt="valorant"
               style={{ width: "50px", height: "50px" }}
             />
-          </a>
+          </NavLink>
           <ul className="items-stretch hidden space-x-3 lg:flex">
             <li className="flex">
               <NavLink
@@ -55,7 +56,14 @@ export default function Header(props) {
             </li>
           </ul>
           <div className="items-center flex-shrink-0 hidden lg:flex">
-            <button className="self-center px-8 py-3 rounded">Sign in</button>
+            <button
+              onClick={() => {
+                history.push("/login");
+              }}
+              className="self-center px-8 py-3 rounded"
+            >
+              Sign in
+            </button>
             <button className="self-center px-8 py-3 font-semibold rounded dark:bg-emerald-400 dark:text-coolGray-900">
               Sign up
             </button>
