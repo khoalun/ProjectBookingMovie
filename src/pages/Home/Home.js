@@ -11,6 +11,7 @@ import Ads from "../../components/Ads";
 import News from "../News/News";
 
 
+
 export default function Home(props) {
   const { arrFilm } = useSelector((state) => state.MovieListReducer);
   const { arrTheatre } = useSelector((state) => state.ManageTheatreReducer);
@@ -34,7 +35,7 @@ export default function Home(props) {
 
       <div className="mx-44  mt-12">
         <HomeMenu arrTheatre={arrTheatre} />
-      </div>
+      </div>  
       <News/>
       <Ads />
     </div>
