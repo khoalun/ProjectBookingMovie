@@ -1,5 +1,8 @@
 import React from "react";
 import listData from "../../constant/newsData";
+import listRowData from "../../constant/newsDataRow";
+import listColData from "../../constant/newsDataCol";
+import "../News/News.scss";
 export default function News() {
   return (
     <section className="md:h-full flex items-center text-gray-600">
@@ -9,7 +12,7 @@ export default function News() {
             See Our Recent News
           </h5>
           <h1 className="text-4xl md:text-6xl text-gray-700 font-semibold">
-            Tailwind Css Responsive Cards
+            Movie News in 24 hours
           </h1>
         </div>
         <div className="flex flex-wrap -m-4">
@@ -27,7 +30,13 @@ export default function News() {
                       {item.day}
                     </h2>
                     <h1 className="text-2xl font-semibold mb-3">{item.name}</h1>
-                    <p className="leading-relaxed mb-3">{item.description}</p>
+                    <p className="leading-relaxed mb-3">
+                      {item.description.length > 200 ? (
+                        <p>{item.description.substring(0, 200)} ...</p>
+                      ) : (
+                        <p> {item.description}</p>
+                      )}
+                    </p>
                     <div className="flex items-center flex-wrap ">
                       <a
                         href="https://movie.zalopay.vn/landing"
@@ -60,7 +69,7 @@ export default function News() {
                           <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
                           <circle cx={12} cy={12} r={3} />
                         </svg>
-                        1.2K
+                        {item.like}
                       </span>
                       <span className="text-gray-400 inline-flex items-center leading-none text-sm">
                         <svg
@@ -74,7 +83,7 @@ export default function News() {
                         >
                           <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"></path>
                         </svg>
-                        6
+                        {item.comment}
                       </span>
                     </div>
                   </div>
@@ -84,23 +93,82 @@ export default function News() {
           })}
         </div>
         <div className="grid grid-cols-12 mt-5 p-2">
-          <div className="col-span-3">
-            <img src="https://s3img.vcdn.vn/123phim/2020/05/ba-dong-lin-shaye-cua-insidious-tai-xuat-trong-phim-kinh-di-bay-linh-hon-15891843391235.png" />
-            <div >
-              <h3 className="text-left font-bold text-lg">
-                Bà đồng’ Lin Shaye của Insidious tái xuất trong phim kinh dị
-                ‘Bẫy Linh Hồn’
-              </h3>
-              <p>
-                Nữ hoàng phim kinh dị Lin Shaye tiếp tục thể hiện khả năng diễn
-                xuất thần với hình ảnh điên loạn trong “DreamKatcher” – phim
-                kinh dị rùng rợn đán
-              </p>
-            </div>
+          {listRowData.map((card, index) => {
+            return (
+              <div className="col-span-3" key={index}>
+                <img src={card.image} alt={card.image} />
+                <div>
+                  <a
+                    href="https://movie.zalopay.vn/landing"
+                    className="text-left font-bold text-lg  text-black"
+                  >
+                    {card.shortDescription}
+                  </a>
+                  <p>{card.description}</p>
+                  <div className="flex text-left" style={{ width: "100%" }}>
+                    <span className="flex  ">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+                        />
+                      </svg>
+                      {card.comment}
+                    </span>
+                    <span className="flex ml-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                        />
+                      </svg>
+                      {card.like}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+          <div className="col-span-3 ">
+            {listColData.map((item, index) => {
+              return (
+                <div className="flex flex-row" key={index}>
+                  <img
+                    style={{ width: "50px", height: "50px" }}
+                    className="imageFixed"
+                    src={item.image}
+                    alt={item.description}
+                  />
+                  <a
+                    className="para text-black"
+                    href="https://movie.zalopay.vn/landing"
+                  >
+                    {item.description.length > 80 ? (
+                      <p>{item.description.substring(0, 80)} ...</p>
+                    ) : (
+                      <p>{item.description}</p>
+                    )}
+                  </a>
+                </div>
+              );
+            })}
           </div>
-          <div className="col-span-3">sac</div>
-          <div className="col-span-3">sac</div>
-          <div className="col-span-2 col-end-12">asc</div>
         </div>
       </div>
     </section>
