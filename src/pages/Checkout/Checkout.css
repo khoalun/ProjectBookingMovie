@@ -1,23 +1,35 @@
 .seat {
-    width: 35px;
-    height: 35px;
-    border-radius: 4px;
-    border: none;
-    cursor: pointer;
-    margin: 15px;
-    background-color: rgb(123, 122, 122);
-    color: white;
-  }
-  
-  .seatReserved {
-    background-color: rgb(232, 76, 75);
-  }
-  
-  .seatChosen {
-    background-color: rgba(18, 176, 18);
-  }
-  
-  .seatVip {
-    background-color: rgb(228, 74, 8);
-  }
-  
+  width: 35px;
+  height: 35px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  margin: 15px;
+  background-color: rgb(123, 122, 122);
+  color: #fff;
+}
+
+.seatReserved {
+  background-color: rgb(232, 76, 75);
+  cursor: no-drop;
+}
+
+.seatChoosing {
+  background-color: rgba(18, 176, 18);
+}
+
+.seatVip {
+  background-color: rgb(228, 74, 8);
+}
+
+.headerFilm {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* .flex.flex-col.items-center.mt-5 {
+  margin-top: 55px;
+} */
