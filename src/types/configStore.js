@@ -2,6 +2,8 @@ import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk from "redux-thunk";
 import { CarouselReducer } from "../reducers/CaroselReducer";
 import { ManageTheatreReducer } from "../reducers/ManageTheatreReducer";
+import { ManageTicketReducer } from "../reducers/ManageTicketReducer";
+
 import { ManageUserReducer } from "../reducers/ManageUserReducer";
 import { MovieListReducer } from "../reducers/MovieListReducer";
 const rootReducer = combineReducers({
@@ -9,8 +11,8 @@ const rootReducer = combineReducers({
   CarouselReducer,
   MovieListReducer,
   ManageTheatreReducer,
-  ManageUserReducer
+  ManageUserReducer,
+  ManageTicketReducer,
 });
-
 
 export const store = createStore(rootReducer, applyMiddleware(thunk));
