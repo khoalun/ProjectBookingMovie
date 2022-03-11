@@ -35,5 +35,12 @@
   -webkit-box-shadow: -1px 2px 18px -6px orange;
   box-shadow: -1px 2px 18px -6px orange;
   color: orange;
-  border: 1px solid orange
+  border: 1px solid orange;
+}
+
+.imageRender {
+  object-fit: cover;
+  max-width: 100%;
+  display: block;
+  border-radius: 4px;
 }

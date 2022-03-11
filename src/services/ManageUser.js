@@ -9,7 +9,9 @@ export default class ManageUserService extends baseService {
     return this.post(`/api/QuanLyNguoiDung/DangNhap` , inforLogin);
   };
 
-  
+  inforUserBooking = () => {
+     return this.post('/api/QuanLyNguoiDung/ThongTinTaiKhoan')
+  }
 }
 
 export const manageUserService = new ManageUserService();

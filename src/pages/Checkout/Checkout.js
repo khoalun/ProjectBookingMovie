@@ -5,6 +5,7 @@ import {
   getDetailTicketAction,
 } from "../../actions/ManageTicketAction";
 import style from "./Checkout.module.css";
+import _ from "lodash";
 import "./Checkout.css";
 import { BOOK_SEAT } from "../../actions/types/ManageTicketType";
 import { InforBooking } from "../../_core/models/InforBooking";
@@ -14,8 +15,9 @@ import {
   PlusCircleOutlined,
   MoneyCollectOutlined,
 } from "@ant-design/icons";
-
-import { Result, Tabs } from "antd";
+import moment from "moment";
+import { Tabs } from "antd";
+import { getUserInforAction } from "../../actions/ManageUserAction";
 
 function Checkout(props) {
   const { userLogin } = useSelector((state) => state.ManageUserReducer);
@@ -232,7 +234,7 @@ function Checkout(props) {
           </div>
         </div>
 
-        <div className="col-span-3 my-auto">
+        <div className="col-span-3 my-20">
           <h3 className="text-center text-2xl">
             {listSeatChosen
               .reduce((total, seat, index) => {
@@ -339,8 +341,61 @@ export default function (props) {
 }
 
 function ResultCheckout(props) {
-  return <div className="p-5">
-    Result of Booking
-     
-  </div>;
+  const dispatch = useDispatch();
+  const { userInfor } = useSelector((state) => state.ManageUserReducer);
+  // const { userLogin } = useSelector((state) => state.ManageUserReducer);
+
+  useEffect(() => {
+    const action = getUserInforAction();
+    dispatch(action);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log("userInfor", userInfor);
+
+  const renderTicketItem = function () {
+    return userInfor.thongTinDatVe?.map((ticket, index) => {
+      const seats = _.first(ticket.danhSachGhe);
+      return (
+        <div className="p-2 lg:w-1/3 md:w-1/2 w-full" key={index}>
+          <div className="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+            <img
+              alt={ticket.tenPhim}
+              className="w-24 h-24 bg-gray-100  flex-shrink-0 rounded-full mr-4 object-cover object-top "
+              src={ticket.hinhAnh}
+            />
+            <div className="flex-grow">
+              <h2 className="text-gray-900 title-font font-bold">
+                {ticket.tenPhim}
+              </h2>
+              <p className="text-gray-500 text-sm font-bold">
+                Day Releases: {moment(ticket.ngayDat).format("hh:mm A ")} - Hour
+                Starts: {moment(ticket.ngayDat).format("DD-MM-YYYY")}
+              </p>
+              <p className="text-sm font-bold">Location : {seats.tenHeThongRap}</p>
+              <p className="text-sm font-bold">Cinema: {seats.tenCumRap}</p>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+  return (
+    <div className="p-5">
+      Result of Booking
+      <section className="text-gray-600 body-font">
+        <div className="container px-5 py-24 mx-auto">
+          <div className="flex flex-col text-center w-full mb-20">
+            <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900 text-purple-600 text-2xl font-bold">
+              History Booking Ticket Of Customer
+            </h1>
+            <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+              Checking out the Location and Time of Movie to have the funny time
+              together
+            </p>
+          </div>
+          <div className="flex flex-wrap -m-2">{renderTicketItem()}</div>
+        </div>
+      </section>
+    </div>
+  );
 }
