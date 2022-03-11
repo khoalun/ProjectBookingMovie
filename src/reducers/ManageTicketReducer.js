@@ -6,16 +6,16 @@ import {
 const stateDefault = {
   detailTicket: {},
   listSeatChosen: [
-    {
-      daDat: false,
-      giaVe: 75000,
-      loaiGhe: "Thuong",
-      maGhe: 49301,
-      maRap: 462,
-      stt: "141",
-      taiKhoanNguoiDat: null,
-      tenGhe: "141",
-    },
+    // {
+    //   daDat: false,
+    //   giaVe: 75000,
+    //   loaiGhe: "Thuong",
+    //   maGhe: 49301,
+    //   maRap: 462,
+    //   stt: "141",
+    //   taiKhoanNguoiDat: null,
+    //   tenGhe: "141",
+    // },
   ],
 };
 
