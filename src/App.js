@@ -25,6 +25,7 @@ export const history = createBrowserHistory();
 function App() {
   return (
     <Router history={history}>
+      <Loading/>
       <Switch>
         <Suspense fallback={<Loading />}>
           <HomeTemplateLazy path="/" exact Component={Home} />

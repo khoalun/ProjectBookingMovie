@@ -1,5 +1,6 @@
 import {
   BOOK_SEAT,
+  FINISH_BOOKING,
   SET_DETAIL_TICKET,
 } from "../actions/types/ManageTicketType";
 
@@ -42,6 +43,10 @@ export const ManageTicketReducer = (state = stateDefault, action) => {
       return { ...state, listSeatChosen: listSeatUpdate };
     }
 
+    case FINISH_BOOKING: {
+      state.listSeatChosen = [];
+      return { ...state };
+    }
     default:
       return { ...state };
   }

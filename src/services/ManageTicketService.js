@@ -6,16 +6,13 @@ export default class ManageTicketService extends baseService {
     super();
   }
 
-  getDetailTicket = (id) => {
+  getDetailTicket = (maLichChieu) => {
     // maLichChieu lay tu Url
-    return this.get(`/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${id}`);
+    return this.get(`/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`);
   };
 
   bookTicket = (inforBooking = new InforBooking()) => {
-    return this.post(
-      `/api/QuanLyDatVe/DatVe`,
-      inforBooking
-    );
+    return this.post(`/api/QuanLyDatVe/DatVe`, inforBooking);
   };
 }
 

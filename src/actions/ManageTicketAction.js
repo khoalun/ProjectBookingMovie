@@ -2,12 +2,13 @@
 
 import { manageTicketService } from "../services/ManageTicketService";
 import { InforBooking } from "../_core/models/InforBooking";
-import { SET_DETAIL_TICKET } from "./types/ManageTicketType";
+import { displayLoadingAction, hideLoadingAction } from "./LoadingAction";
+import { FINISH_BOOKING, SET_DETAIL_TICKET } from "./types/ManageTicketType";
 
-export const getDetailTicketAction = (id) => {
+export const getDetailTicketAction = (maLichChieu) => {
   return async (dispatch) => {
     try {
-      const result = await manageTicketService.getDetailTicket(id);
+      const result = await manageTicketService.getDetailTicket(maLichChieu);
       console.log("result", result);
       if (result.status === 200) {
         dispatch({
@@ -25,9 +26,15 @@ export const getDetailTicketAction = (id) => {
 export const bookTicketAction = (inforBooking = new InforBooking()) => {
   return async (dispatch) => {
     try {
+      dispatch(displayLoadingAction);
       const result = await manageTicketService.bookTicket(inforBooking);
       console.log(result.data.content);
+      // Đặt vé thành công gọi api load lại phòng vé
+      await dispatch(getDetailTicketAction(inforBooking.maLichChieu));
+      await dispatch({ type: FINISH_BOOKING });
+      dispatch(hideLoadingAction);
     } catch (error) {
+      dispatch(hideLoadingAction);
       console.log(error.response.data);
     }
   };

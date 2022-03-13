@@ -1,16 +1,24 @@
-import React from "react";
-import '../Loading/Loading.scss'
+import React, { Fragment } from "react";
+import { useSelector } from "react-redux";
+import "../Loading/Loading.scss";
 export default function Loading() {
+  const  {isLoading}  = useSelector((state) => state.LoadingReducer);
   return (
-    <div className="loader-wrapper">
-      <div className="loader">
-        <div className="loader__bar"></div>
-        <div className="loader__bar"></div>
-        <div className="loader__bar"></div>
-        <div className="loader__bar"></div>
-        <div className="loader__bar"></div>
-        <div className="loader__ball"></div>
-      </div>
-    </div>
+    <Fragment>
+      {isLoading ? (
+        <div className="loader-wrapper">
+          <div className="loader">
+            <div className="loader__bar"></div>
+            <div className="loader__bar"></div>
+            <div className="loader__bar"></div>
+            <div className="loader__bar"></div>
+            <div className="loader__bar"></div>
+            <div className="loader__ball"></div>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+    </Fragment>
   );
 }
