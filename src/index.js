@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "antd/dist/antd.min.css";
-
+import './i18n';
 
 ReactDOM.render(
   <Provider store={store}>

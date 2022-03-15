@@ -2,8 +2,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { history } from "../../../../App";
+import { Select } from 'antd';
+
+import {useTranslation} from 'react-i18next'
 export default function Header(props) {
-  
+  const {t, i18n} = useTranslation();
+  const { Option } = Select;
+  const handleChange =(value) => {
+       i18n.changeLanguage(value)
+  }
   return (
     <div>
       <header className="p-4 dark:bg-coolGray-800  bg-opacity-60 bg-black text-white fixed w-full z-10">
@@ -27,7 +34,7 @@ export default function Header(props) {
                 to="/home"
                 rel="noopener noreferrer"
                 href="#"
-                className="flex items-center px-4 -mb-1 dark:border-transparent dark:text-emerald-400 dark:border-emerald-400 text-white"
+                className="flex items-center px-4 -mb-1 dark:border-transparent dark:border-emerald-400 text-white"
                 activeClassName="border-b-2 border-white"
               >
                 Home
@@ -38,7 +45,7 @@ export default function Header(props) {
                 to="/contact"
                 rel="noopener noreferrer"
                 href="#"
-                className="flex items-center px-4 -mb-1 dark:border-transparent text-white"
+                className="flex items-center px-4 -mb-1 dark:border-transparent dark:border-emerald-400 text-white"
                 activeClassName="border-b-2 border-white"
               >
                 Contact
@@ -48,7 +55,7 @@ export default function Header(props) {
               <NavLink
                 rel="noopener noreferrer"
                 href="#"
-                className="flex items-center px-4 -mb-1  dark:border-transparent text-white"
+                className="flex items-center px-4 -mb-1  dark:border-transparent dark:border-emerald-400 text-white"
                 activeClassName="border-b-2 border-white"
                 to="/news"
               >
@@ -63,11 +70,17 @@ export default function Header(props) {
               }}
               className="self-center px-8 py-3 rounded"
             >
-              Sign in
+              {t('Sign In')}
             </button>
-            <button className="self-center px-8 py-3 font-semibold rounded dark:bg-emerald-400 dark:text-coolGray-900">
+            <button className="self-center px-8 py-3 font-semibold rounded dark:text-coolGray-50">
               Sign up
             </button>
+
+            <Select defaultValue="vi" style={{ width: 100 }} onChange={handleChange}>
+            <Option value="eng">Eng </Option>
+            <Option value="fin">Fin </Option>
+            <Option value="vi">Vi </Option>
+            </Select>
           </div>
           <button className="p-4 lg:hidden">
             <svg
