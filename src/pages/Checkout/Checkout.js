@@ -321,18 +321,26 @@ function Checkout(props) {
 
 const { TabPane } = Tabs;
 
-function callback(key) {
-  console.log(key);
-}
+
 /* eslint-disable import/no-anonymous-default-export */
 export default function (props) {
-  return (
+  const {tabActive} = useSelector(state=>state.ManageTicketReducer)
+  console.log('tabActive', tabActive)
+  const dispatch = useDispatch();
+   return (
     <div className="p-5">
-      <Tabs defaultActiveKey="1" onChange={callback}>
-        <TabPane tab="01 CHOOSE SEAT & CHECKOUT" key="1">
+      <Tabs defaultActiveKey="1" activeKey={tabActive} onChange={(key)=> {
+              dispatch({
+                type: 'CHANGE_TAB_ACTIVE',
+                number: key.toString()
+              })
+      }}>
+        <TabPane tab="01 CHOOSE SEAT & CHECKOUT" key="1" 
+        >
           <Checkout {...props} />
         </TabPane>
-        <TabPane tab="02 RESULT OF CHECKOUT" key="2">
+        <TabPane tab="02 RESULT OF CHECKOUT" key="2" 
+        >
           <ResultCheckout {...props} />
         </TabPane>
       </Tabs>
@@ -372,7 +380,8 @@ function ResultCheckout(props) {
                 Starts: {moment(ticket.ngayDat).format("DD-MM-YYYY")}
               </p>
               <p className="text-sm font-bold">Location : {seats.tenHeThongRap}</p>
-              <p className="text-sm font-bold">Cinema: {seats.tenCumRap}</p>
+              <p className="text-sm font-bold">Cinema: {seats.tenCumRap} - <div>{ticket.danhSachGhe.map((ghe, index) => { return <span className="text-green-500 text-xl mr-2" key={index}> [{ghe.tenGhe}] </span> })}</div>
+                        </p>
             </div>
           </div>
         </div>

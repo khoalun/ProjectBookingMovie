@@ -2,6 +2,7 @@ import {
   BOOK_SEAT,
   FINISH_BOOKING,
   SET_DETAIL_TICKET,
+  CHANGE_TAB,
 } from "../actions/types/ManageTicketType";
 
 const stateDefault = {
@@ -18,6 +19,7 @@ const stateDefault = {
     //   tenGhe: "141",
     // },
   ],
+  tabActive: '1',
 };
 
 export const ManageTicketReducer = (state = stateDefault, action) => {
@@ -46,6 +48,15 @@ export const ManageTicketReducer = (state = stateDefault, action) => {
     case FINISH_BOOKING: {
       state.listSeatChosen = [];
       return { ...state };
+    }
+
+    case CHANGE_TAB : {
+      state.tabActive = '2';
+      return {...state}
+    }
+    case 'CHANGE_TAB_ACTIVE': {
+        state.tabActive = action.number;
+        return {...state}
     }
     default:
       return { ...state };

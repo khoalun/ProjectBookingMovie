@@ -3,7 +3,7 @@
 import { manageTicketService } from "../services/ManageTicketService";
 import { InforBooking } from "../_core/models/InforBooking";
 import { displayLoadingAction, hideLoadingAction } from "./LoadingAction";
-import { FINISH_BOOKING, SET_DETAIL_TICKET } from "./types/ManageTicketType";
+import { FINISH_BOOKING, SET_DETAIL_TICKET, CHANGE_TAB } from "./types/ManageTicketType";
 
 export const getDetailTicketAction = (maLichChieu) => {
   return async (dispatch) => {
@@ -32,9 +32,11 @@ export const bookTicketAction = (inforBooking = new InforBooking()) => {
       // Đặt vé thành công gọi api load lại phòng vé
       await dispatch(getDetailTicketAction(inforBooking.maLichChieu));
       await dispatch({ type: FINISH_BOOKING });
-      dispatch(hideLoadingAction);
+      await dispatch(hideLoadingAction);
+      dispatch({type:CHANGE_TAB})
     } catch (error) {
       dispatch(hideLoadingAction);
+    
       console.log(error.response.data);
     }
   };
