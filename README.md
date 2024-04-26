@@ -1,5 +1,5 @@
 
-## The ReactJS project is one of two major projects graduating. It is a project about Booking movie tickets. It provides the basic functions and interfaces of a typical project such as:
+## The ReactJS project is one of two major projects . It is a project about Booking movie tickets. It provides the basic functions and interfaces of a typical project such as:
 
 ** Client-side (Booking Ticket Page) **
  Component
